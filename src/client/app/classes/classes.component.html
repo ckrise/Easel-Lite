@@ -1,0 +1,17 @@
+<div class="class-list">
+  <h3>Class List</h3>
+  <table>
+  <tr *ngFor="let class of classData">
+    <td>{{class.department}}</td>
+    <td>{{class.number}}</td>
+    <td>—</td>
+    <td class="link">
+      <a routerLink="/classes/{{class.department}}{{class.number}}">Details</a>
+    </td>
+    <td class="link">
+      <a href="#">Roster</a>
+    </td>
+  </tr>
+  </table>
+</div>
+<a href="#">Create new class...</a>
