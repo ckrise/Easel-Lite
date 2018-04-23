@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'classes', component: ClassesComponent },
   { path: 'classes/:classid', component: ClassDetailComponent },
-  { path: '/*', component: NotFoundComponent },
+  // { path: '/*', component: NotFoundComponent },
 ];
 
 @NgModule({

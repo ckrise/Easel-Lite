@@ -183,12 +183,10 @@ var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.j
 var homepage_component_1 = __webpack_require__("./src/client/app/homepage/homepage.component.ts");
 var classes_component_1 = __webpack_require__("./src/client/app/classes/classes.component.ts");
 var class_detail_component_1 = __webpack_require__("./src/client/app/class-detail/class-detail.component.ts");
-var not_found_component_1 = __webpack_require__("./src/client/app/not-found/not-found.component.ts");
 var routes = [
     { path: '', component: homepage_component_1.HomepageComponent },
     { path: 'classes', component: classes_component_1.ClassesComponent },
     { path: 'classes/:classid', component: class_detail_component_1.ClassDetailComponent },
-    { path: '/*', component: not_found_component_1.NotFoundComponent },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -216,7 +214,7 @@ module.exports = ""
 /***/ "./src/client/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
@@ -311,7 +309,7 @@ module.exports = ""
 /***/ "./src/client/app/class-detail/class-detail.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"example\">\r\n  <form onsubmit=\"return false\">\r\n    <h3>Class Details</h3>\r\n    <table>\r\n      <tbody><tr>\r\n        <td>Department:</td>\r\n        <td>\r\n          <input maxlength=\"4\" minlength=\"4\" name=\"department\" required=\"\"type=\"text\" value={{class.department}}>\r\n        </td>\r\n      </tr>\r\n      <tr>\r\n        <td>Number:</td>\r\n        <td>\r\n          <input max=\"999\" min=\"100\" name=\"number\" required=\"\" type=\"number\" value={{class.number}}>\r\n        </td>\r\n      </tr>\r\n      <tr>\r\n        <td>Title:</td>\r\n        <td>\r\n          <input name=\"title\" required=\"\" type=\"text\" value={{class.title}}>\r\n        </td>\r\n      </tr>\r\n      <tr>\r\n        <td>Teacher:</td>\r\n        <td>\r\n          <select name=\"teacher\" required=\"\">\r\n            <option *ngFor=\"let teacher of teachers\">\r\n              {{teacher.firstname}} {{teacher.lastname}}\r\n            </option>\r\n          </select>\r\n        </td>\r\n      </tr>\r\n      <tr>\r\n        <td colspan=\"2\" style=\"text-align: right\">\r\n          <input style=\"margin-right: 3em;\" value=\"Delete\" type=\"button\">\r\n          <input value=\"Cancel\" type=\"button\">\r\n          <input value=\"Save\" type=\"submit\">\r\n        </td>\r\n      </tr>\r\n    </tbody>\r\n  </table>\r\n</form>\r\n</div>\r\n"
+module.exports = "<div class=\"example\">\r\n    <form onsubmit=\"return false\">\r\n        <h3>Class Details</h3>\r\n        <table>\r\n            <tbody>\r\n                <tr>\r\n                    <td>Department:</td>\r\n                    <td>\r\n                        <input maxlength=\"4\" minlength=\"4\" name=\"department\" required=\"\" type=\"text\" value={{class.department}}>\r\n                    </td>\r\n                </tr>\r\n                <tr>\r\n                    <td>Number:</td>\r\n                    <td>\r\n                        <input max=\"999\" min=\"100\" name=\"number\" required=\"\" type=\"number\" value={{class.number}}>\r\n                    </td>\r\n                </tr>\r\n                <tr>\r\n                    <td>Title:</td>\r\n                    <td>\r\n                        <input name=\"title\" required=\"\" type=\"text\" value={{class.title}}>\r\n                    </td>\r\n                </tr>\r\n                <tr>\r\n                    <td>Teacher:</td>\r\n                    <td>\r\n                        <select name=\"teacher\" required=\"\">\r\n            <option *ngFor=\"let teacher of teachers\" [selected]=\"teacher === class.teacher\">\r\n              {{teacher.firstname}} {{teacher.lastname}}\r\n            </option>\r\n          </select>\r\n                    </td>\r\n                </tr>\r\n                <tr>\r\n                    <td colspan=\"2\" style=\"text-align: right\">\r\n                        <input style=\"margin-right: 3em;\" value=\"Delete\" type=\"button\">\r\n                        <input value=\"Cancel\" type=\"button\">\r\n                        <input value=\"Save\" type=\"submit\">\r\n                    </td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </form>\r\n</div>"
 
 /***/ }),
 
@@ -429,7 +427,7 @@ module.exports = ""
 /***/ "./src/client/app/classes/classes.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"class-list\">\n  <h3>Class List</h3>\n  <table>\n  <tr *ngFor=\"let class of classData\">\n    <td>{{class.department}}</td>\n    <td>{{class.number}}</td>\n    <td>—</td>\n    <td class=\"link\">\n      <a routerLink=\"/classes/{{class.department}}{{class.number}}\">Details</a>\n    </td>\n    <td class=\"link\">\n      <a href=\"#\">Roster</a>\n    </td>\n  </tr>\n  </table>\n</div>\n<a href=\"#\">Create new class...</a>\n"
+module.exports = "<div class=\"class-list\">\r\n  <h3>Class List</h3>\r\n  <table>\r\n  <tr *ngFor=\"let class of classData\">\r\n    <td>{{class.department}}</td>\r\n    <td>{{class.number}}</td>\r\n    <td>—</td>\r\n    <td class=\"link\">\r\n      <a routerLink=\"/classes/{{class.department}}{{class.number}}\">Details</a>\r\n    </td>\r\n    <td class=\"link\">\r\n      <a href=\"#\">Roster</a>\r\n    </td>\r\n  </tr>\r\n  </table>\r\n</div>\r\n<a href=\"#\">Create new class...</a>\r\n"
 
 /***/ }),
 
@@ -512,10 +510,9 @@ var ClassesComponent = /** @class */ (function () {
             template: __webpack_require__("./src/client/app/classes/classes.component.html"),
             styles: [__webpack_require__("./src/client/app/classes/classes.component.css")]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof api_service_1.ApiService !== "undefined" && api_service_1.ApiService) === "function" && _a || Object])
+        __metadata("design:paramtypes", [api_service_1.ApiService])
     ], ClassesComponent);
     return ClassesComponent;
-    var _a;
 }());
 exports.ClassesComponent = ClassesComponent;
 
@@ -532,7 +529,7 @@ module.exports = ""
 /***/ "./src/client/app/homepage/homepage.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <h1>Welcome to Easel Lite!</h1>\n  <ul>\n    <li><a routerLink=\"/classes\">Manage classes</a></li>\n  </ul>\n</div>\n"
+module.exports = "<div>\r\n  <h1>Welcome to Easel Lite!</h1>\r\n  <ul>\r\n    <li><a routerLink=\"/classes\">Manage classes</a></li>\r\n  </ul>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -584,7 +581,7 @@ module.exports = ""
 /***/ "./src/client/app/not-found/not-found.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>404</h2>\n"
+module.exports = "<h2>404</h2>\r\n"
 
 /***/ }),
 
