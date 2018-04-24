@@ -14,37 +14,34 @@ import { UserData } from '../../../server/models/user'
 })
 export class ClassDetailComponent implements OnInit {
 
-  class: ClassData
-  teachers: UserData[]
+  class = <ClassData>{}
+  originalClass: ClassData
+  teachers = new Array<UserData>()
 
   constructor(private activatedRoute: ActivatedRoute,
-              private apiService: ApiService
-              private location: Location) { }
+              private apiService: ApiService,
+              private location: Location) {}
 
   async ngOnInit() {
     this.activatedRoute.params.subscribe(async params => {
-      let classid = params.classid
-      this.class = await this.apiService.getClassById(classid)
+      const classid = params.classid
+      this.originalClass = this.class = await this.apiService.getClassById(classid)
     })
 
     this.teachers = await this.apiService.getUsersByRole('teacher')
   }
 
-
-//https://stackoverflow.com/a/41196416
-//https://stackoverflow.com/a/36470719
-  async saveClass(form: NgForm) {
-    console.log(form)
-
-    this.class.department = form.department
-    this.class.number = form.Number
-    this.class.teacher = form.teacher
-    this.class.title = form.title
-
-    await this.apiService.updateClass(class)
-
+  // https://stackoverflow.com/a/36470719
+  saveClass() {
+    console.log("Saving...")
+    this.apiService.updateClass(this.class)
     this.location.back()
   }
 
-
+  cancel() {
+    if (window.confirm('Discard Changes?')) {
+      this.class = this.originalClass
+      this.location.back()
+    }
+  }
 }
