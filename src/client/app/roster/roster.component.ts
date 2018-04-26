@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { Location } from '@angular/common'
+import { Router } from '@angular/router'
 
 import { ApiService } from '../api.service'
 import { ClassData } from '../../../server/models/class'
@@ -21,7 +22,8 @@ export class RosterComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
     this.checkedNames = {}
   }
@@ -29,7 +31,11 @@ export class RosterComponent implements OnInit {
   async ngOnInit() {
     this.activatedRoute.params.subscribe(async params => {
       this.classid = params.classid
-      this.courseStudents = await this.apiService.getRoster(this.classid)
+      try {
+        this.courseStudents = await this.apiService.getRoster(this.classid)
+      } catch {
+        this.router.navigate(['404'])
+      }
 
       for (let name of this.courseStudents) {
         this.checkedNames[name.id] = true
