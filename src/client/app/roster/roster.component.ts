@@ -35,6 +35,7 @@ export class RosterComponent implements OnInit {
         this.courseStudents = await this.apiService.getRoster(this.classid)
       } catch {
         this.router.navigate(['404'])
+        return
       }
 
       for (let name of this.courseStudents) {
