@@ -1,3 +1,7 @@
-<div>
-
+<div class="roster">
+  <div class="rosterCheckboxes" *ngFor="let student of students">
+  <input type="checkbox" [id]="student.id" [name]="student.id" [(ngModel)]="checkedNames">
+  <label [for]="student.id">
+    {{student.firstname}} {{student.lastname}}
+  </label>
 </div>
