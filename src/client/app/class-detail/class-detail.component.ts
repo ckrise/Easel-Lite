@@ -15,7 +15,6 @@ import { UserData } from '../../../server/models/user'
 export class ClassDetailComponent implements OnInit {
 
   class = <ClassData>{}
-  originalClass: ClassData
   teachers = new Array<UserData>()
 
   constructor(
@@ -27,7 +26,7 @@ export class ClassDetailComponent implements OnInit {
   async ngOnInit() {
     this.activatedRoute.params.subscribe(async params => {
       const classid = params.classid
-      this.originalClass = this.class = await this.apiService.getClassById(classid)
+      this.class = await this.apiService.getClassById(classid)
     })
 
     this.teachers = await this.apiService.getUsersByRole('teacher')
@@ -41,14 +40,13 @@ export class ClassDetailComponent implements OnInit {
   }
 
   cancel() {
-    if (window.confirm('Discard Changes?')) {
-      this.class = this.originalClass
+    if (window.confirm('Are you sure you want to abandon this course?')) {
       this.location.back()
     }
   }
 
   deleteClass() {
-    if (window.confirm('Delete Class?')) {
+    if (window.confirm('Are you sure you want to delete this course?')) {
       this.apiService.deleteClass(this.class.id)
       this.location.back()
     }

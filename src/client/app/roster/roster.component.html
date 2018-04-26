@@ -1,6 +1,6 @@
 <div class="roster">
-  <form (submit)="saveRoster()">
-    <div class="rosterCheckboxes" *ngFor="let student of students">
+  <form #classForm="ngForm" (submit)="saveRoster()">
+    <div class="rosterCheckboxes" *ngFor="let student of allStudents">
       <input type="checkbox" [id]="student.id" [name]="student.id" [(ngModel)]="checkedNames[student.id]">
       <label [for]="student.id">
         {{student.firstname}} {{student.lastname}}
