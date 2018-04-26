@@ -30,6 +30,10 @@ export class RosterComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       this.classid = params.classid
       this.courseStudents = await this.apiService.getRoster(this.classid)
+
+      for (let name of this.courseStudents) {
+        this.checkedNames[name.id] = true
+      }
     })
 
     this.allStudents = await this.apiService.getUsersByRole('student')
