@@ -1,8 +1,12 @@
 <div class="roster">
-  <div class="rosterCheckboxes" *ngFor="let student of allStudents">
-    <input type="checkbox" [id]="student.id" [name]="student.id" [(ngModel)]="allStudents">
-    <label [for]="student.id">
-      {{student.firstname}} {{student.lastname}}
-    </label>
-  </div>
+  <form (submit)="saveRoster()">
+    <div class="rosterCheckboxes" *ngFor="let student of students">
+      <input type="checkbox" [id]="student.id" [name]="student.id" [(ngModel)]="checkedNames[student.id]">
+      <label [for]="student.id">
+        {{student.firstname}} {{student.lastname}}
+      </label>
+    </div>
+    <input value="Cancel" type="button" (click)="cancel()">
+    <input value="Save" type="submit" [disabled]="classForm.invalid || classForm.pristine">
+  </form>
 </div>
