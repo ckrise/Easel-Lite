@@ -20,7 +20,9 @@ export class ApiService {
   }
   async getClassById(classid: string) {
     let url = `/api/classes/${classid}`
-    return await this.httpClient.get<ClassData>(url).toPromise()
+    let course = await this.httpClient.get<ClassData>(url).toPromise()
+    course.teacher = await this.getUsersById(course.teacher.id)
+    return course
   }
   async updateClass(classData: ClassData) {
     let url = `/api/classes/${classData.id}`
@@ -31,7 +33,8 @@ export class ApiService {
         {
           number: classData.number,
           department: classData.department,
-          title: classData.title
+          title: classData.title,
+          teacher: classData.teacher.id
         }),
       this.jsonOptions
     ).toPromise()
@@ -41,11 +44,17 @@ export class ApiService {
     return await this.httpClient.delete<ClassData>(url).toPromise()
   }
   async createClass(classData: ClassData) {
-    let url = '/api/classes'
+  let url = '/api/classes'
 
     return await this.httpClient.post<ClassData>(
       url,
-      JSON.stringify(classData),
+      JSON.stringify(
+        {
+          number: classData.number,
+          department: classData.department,
+          title: classData.title,
+          teacher: classData.teacher.id
+        }),
       this.jsonOptions
     ).toPromise()
   }
@@ -53,5 +62,9 @@ export class ApiService {
   async getUsersByRole(role: string) {
     let url = `/api/users/?role=${role}`
     return await this.httpClient.get<UserData[]>(url).toPromise()
+  }
+  async getUsersById(userid: string) {
+    let url = `/api/users/${userid}`
+    return await this.httpClient.get<UserData>(url).toPromise()
   }
 }

@@ -6,29 +6,29 @@
                 <tr>
                     <td>Department:</td>
                     <td>
-                        <input maxlength="4" minlength="4" name="department" #department="ngModel" required type="text" [(ngModel)]="class.department">
+                        <input maxlength="4" minlength="4" name="department" required type="text" [(ngModel)]="class.department">
                     </td>
                 </tr>
                 <tr>
                     <td>Number:</td>
                     <td>
-                        <input max="999" min="100" name="number" required #number="ngModel" type="number" [(ngModel)]="class.number">
+                        <input max="999" min="100" name="number" required type="number" [(ngModel)]="class.number">
                     </td>
                 </tr>
                 <tr>
                     <td>Title:</td>
                     <td>
-                        <input name="title" required type="text" #title="ngModel" [(ngModel)]="class.title">
+                        <input name="title" required type="text" [(ngModel)]="class.title">
                     </td>
                 </tr>
                 <tr>
                     <td>Teacher:</td>
                     <td>
-                        <select name="teacher" #teacher="ngModel" required [(ngModel)]="class.teacher">
-              <option *ngFor="let teacher of teachers" [value]="teacher">
-                {{teacher.firstname}} {{teacher.lastname}}
-              </option>
-            </select>
+                        <select name="teacher" required [(ngModel)]="class.teacher.id">
+                            <option *ngFor="let teacher of teachers" [value]="teacher.id">
+                                {{teacher.firstname}} {{teacher.lastname}}
+                            </option>
+                        </select>
                     </td>
                 </tr>
                 <tr>

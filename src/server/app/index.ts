@@ -50,7 +50,7 @@ app.use("/el/", (req, res) => {
 app.use(express.static("./public"));
 
 // Last resort
-// app.use((req, res) => {
-//   res.status(404);
-//   res.render("error404", req);
-// });
+app.use((req, res) => {
+  res.status(404);
+  res.render("error404", req);
+});

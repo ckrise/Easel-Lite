@@ -13,7 +13,9 @@ import { UserData } from '../../../server/models/user'
 })
 export class NewClassComponent implements OnInit {
 
-  class = <ClassData>{}
+  class = <ClassData>{
+    teacher: {id: ""}
+  }
   teachers = new Array<UserData>()
 
   constructor(private apiService: ApiService,
