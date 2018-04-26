@@ -15,6 +15,18 @@ export class ClassesComponent implements OnInit {
 
   async ngOnInit() {
     this.classData = await this.apiService.getClasses()
+    this.classData.sort(this.sortClassData)
+  }
+
+  sortClassData(n1: ClassData, n2: ClassData) {
+    let deptDiff: number;
+    if (n1.department > n2.department) {
+      return -1
+    } else if (n1.department < n2.department){
+      return 1
+    } else {
+      return n1.number - n2.number
+    }
   }
 
 }
