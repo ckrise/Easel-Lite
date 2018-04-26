@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms'
+import {Location} from '@angular/common';
+
+import { ApiService } from '../api.service'
+import { ClassData } from '../../../server/models/class'
+import { UserData } from '../../../server/models/user'
 
 @Component({
   selector: 'el-new-class',
@@ -7,9 +13,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewClassComponent implements OnInit {
 
-  constructor() { }
+  class = <ClassData>{}
+  teachers = new Array<UserData>()
 
-  ngOnInit() {
+  constructor(private apiService: ApiService,
+              private location: Location) {}
+
+  async ngOnInit() {
+    this.teachers = await this.apiService.getUsersByRole('teacher')
+  }
+
+  // https://stackoverflow.com/a/36470719
+  saveClass() {
+    console.log("Saving...")
+    this.apiService.createClass(this.class)
+    this.location.back()
+  }
+
+  cancel() {
+    if (window.confirm('Are you sure you want to abandon this class?')) {
+      this.location.back()
+    }
   }
 
 }
