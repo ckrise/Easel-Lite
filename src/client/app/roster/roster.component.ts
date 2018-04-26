@@ -36,11 +36,10 @@ export class RosterComponent implements OnInit {
   }
 
   async saveRoster() {
-    for (let name in this.allStudents) {
-      if (name in this.checkedNames) {
-        await this.apiService.addStudent(this.classid, name)
-      } else {
-        await this.apiService.removeStudent(this.classid, name)
+    for (let name of this.allStudents) {
+      await this.apiService.removeStudent(this.classid, name.id)
+      if (name.id in this.checkedNames) {
+        await this.apiService.addStudent(this.classid, name.id)
       }
     }
   }

@@ -11,12 +11,9 @@ export class ClassesComponent implements OnInit {
 
   classData: ClassData[]
 
-  constructor(private apiService: ApiService) {
-    console.log('hello')
-  }
+  constructor(private apiService: ApiService) { }
 
   async ngOnInit() {
-    console.log('ngOnInit')
     this.classData = await this.apiService.getClasses()
   }
 
