@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ApiService } from '../api.service'
+import { UserData } from '../../../server/models/user'
+
 @Component({
   selector: 'el-roster',
   templateUrl: './roster.component.html',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RosterComponent implements OnInit {
 
-  constructor() { }
+  students: UserData[]
 
-  ngOnInit() {
+  constructor(private apiService: ApiService) { }
+
+  async ngOnInit() {
+    this.students = await this.apiService.getUsersByRole('student')
   }
 
 }
