@@ -1,5 +1,5 @@
 <div class="example">
-    <form (submit)="saveClass()" #classForm="ngForm">
+    <form (submit)="createClass()" #classForm="ngForm">
         <h3>Class Details</h3>
         <table>
             <tbody>
@@ -34,7 +34,7 @@
                 <tr>
                     <td colspan="2" style="text-align: right">
                         <input value="Cancel" type="button" (click)="cancel()">
-                        <input value="Save" type="submit" [disabled]="classForm.invalid || classForm.pristine">
+                        <input value="Create" type="submit" [disabled]="classForm.invalid || classForm.pristine">
                     </td>
                 </tr>
             </tbody>
