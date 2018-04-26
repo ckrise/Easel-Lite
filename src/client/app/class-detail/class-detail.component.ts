@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { NgForm } from '@angular/forms'
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 import { ApiService } from '../api.service'
 import { ClassData } from '../../../server/models/class'
@@ -18,9 +18,11 @@ export class ClassDetailComponent implements OnInit {
   originalClass: ClassData
   teachers = new Array<UserData>()
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private apiService: ApiService,
-              private location: Location) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private apiService: ApiService,
+    private location: Location
+  ) {}
 
   async ngOnInit() {
     this.activatedRoute.params.subscribe(async params => {

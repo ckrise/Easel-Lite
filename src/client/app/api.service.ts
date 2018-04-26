@@ -67,4 +67,9 @@ export class ApiService {
     let url = `/api/users/${userid}`
     return await this.httpClient.get<UserData>(url).toPromise()
   }
+
+  async getRoster(classid: string) {
+    let url = `/api/rosters/${classid}`
+    return await this.httpClient.get<UserData[]>(url).toPromise()
+  }
 }
