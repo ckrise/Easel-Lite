@@ -44,4 +44,11 @@ export class ClassDetailComponent implements OnInit {
       this.location.back()
     }
   }
+
+  deleteClass() {
+    if (window.confirm('Delete Class?')) {
+      this.apiService.deleteClass(this.class.id)
+      this.location.back()
+    }
+  }
 }

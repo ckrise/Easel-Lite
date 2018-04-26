@@ -40,7 +40,11 @@ app.use(expressSession({
 
 // Custom Middleware
 app.use("/api/", api.router);
-app.use("/el", express.static("./dist"));
+app.use("/el/", express.static("./dist"));
+app.use("/el/", (req, res) => {
+  res.sendFile(process.cwd() + "/dist/index.html");
+})
+
 
 // Static files
 app.use(express.static("./public"));
