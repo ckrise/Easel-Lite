@@ -72,4 +72,12 @@ export class ApiService {
     let url = `/api/rosters/${classid}`
     return await this.httpClient.get<UserData[]>(url).toPromise()
   }
+  async addStudent(classid: string, studentid: string) {
+    let url = `/api/rosters/${classid}/${studentid}`
+    return await this.httpClient.put<UserData>(url, "").toPromise()
+  }
+  async removeStudent(classid: string, studentid: string) {
+    let url = `/api/rosters/${classid}/${studentid}`
+    return await this.httpClient.delete<UserData>(url).toPromise()
+  }
 }
