@@ -41,7 +41,7 @@ export class ApiService {
     return await this.httpClient.delete<ClassData>(url).toPromise()
   }
   async createClass(classData: ClassData) {
-    let url = `/api/classes`
+    let url = '/api/classes'
 
     return await this.httpClient.post<ClassData>(
       url,

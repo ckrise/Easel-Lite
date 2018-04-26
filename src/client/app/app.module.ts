@@ -10,7 +10,8 @@ import { ClassesComponent } from './classes/classes.component';
 import { ApiService } from './api.service';
 import { ClassDetailComponent } from './class-detail/class-detail.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { NewClassComponent } from './new-class/new-class.component'
+import { NewClassComponent } from './new-class/new-class.component';
+import { RosterComponent } from './roster/roster.component'
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { NewClassComponent } from './new-class/new-class.component'
     ClassDetailComponent,
     NotFoundComponent,
     NewClassComponent,
+    RosterComponent,
   ],
   imports: [
     BrowserModule,

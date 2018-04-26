@@ -25,7 +25,6 @@ export class NewClassComponent implements OnInit {
 
   // https://stackoverflow.com/a/36470719
   createClass() {
-    console.log("Saving...")
     this.apiService.createClass(this.class)
     this.location.back()
   }
