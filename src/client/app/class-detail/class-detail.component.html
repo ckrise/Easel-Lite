@@ -34,7 +34,7 @@
                 <tr>
                     <td colspan="2" style="text-align: right">
                         <input style="margin-right: 3em;" value="Delete" type="button" (click)="deleteClass()">
-                        <input value="Cancel" type="button" (click)="cancel()">
+                        <input value="Cancel" type="button" (click)="cancel(classForm)">
                         <input value="Save" type="submit" [disabled]="classForm.invalid || classForm.pristine">
                     </td>
                 </tr>

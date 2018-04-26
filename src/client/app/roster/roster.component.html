@@ -6,7 +6,7 @@
         {{student.firstname}} {{student.lastname}}
       </label>
     </div>
-    <input value="Cancel" type="button" (click)="cancel()">
+    <input value="Cancel" type="button" (click)="cancel(classForm)">
     <input value="Save" type="submit" [disabled]="classForm.invalid || classForm.pristine">
   </form>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { Location } from '@angular/common'
 import { Router } from '@angular/router'
+import { NgForm } from '@angular/forms'
 
 import { ApiService } from '../api.service'
 import { ClassData } from '../../../server/models/class'
@@ -22,7 +22,6 @@ export class RosterComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    private location: Location,
     private router: Router
   ) {
     this.checkedNames = {}
@@ -53,11 +52,12 @@ export class RosterComponent implements OnInit {
         await this.apiService.addStudent(this.classid, name.id)
       }
     }
+    this.router.navigate(['classes'])
   }
 
-  cancel() {
-    if (window.confirm('Are you sure you want to discard these changes?')) {
-      this.location.back()
+  cancel(form: NgForm) {
+    if (form.pristine || window.confirm('Are you sure you want to discard these changes?')) {
+      this.router.navigate(['classes'])
     }
   }
 }

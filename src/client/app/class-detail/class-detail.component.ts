@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
 import { NgForm } from '@angular/forms'
-import { Location } from '@angular/common';
 import { Router } from '@angular/router'
 
 import { ApiService } from '../api.service'
@@ -21,7 +20,6 @@ export class ClassDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
-    private location: Location,
     private router: Router
   ) {}
 
@@ -43,19 +41,19 @@ export class ClassDetailComponent implements OnInit {
   saveClass() {
     console.log("Saving...")
     this.apiService.updateClass(this.class)
-    this.location.back()
+    this.router.navigate(['classes'])
   }
 
-  cancel() {
-    if (window.confirm('Are you sure you want to abandon this course?')) {
-      this.location.back()
+  cancel(form: NgForm) {
+    if (form.pristine || window.confirm('Are you sure you want to abandon this course?')) {
+      this.router.navigate(['classes'])
     }
   }
 
   deleteClass() {
     if (window.confirm('Are you sure you want to delete this course?')) {
       this.apiService.deleteClass(this.class.id)
-      this.location.back()
+      this.router.navigate(['classes'])
     }
   }
 }
