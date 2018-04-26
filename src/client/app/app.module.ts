@@ -9,7 +9,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ClassesComponent } from './classes/classes.component';
 import { ApiService } from './api.service';
 import { ClassDetailComponent } from './class-detail/class-detail.component';
-import { NotFoundComponent } from './not-found/not-found.component'
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NewClassComponent } from './new-class/new-class.component'
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NotFoundComponent } from './not-found/not-found.component'
     HomepageComponent,
     ClassesComponent,
     ClassDetailComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NewClassComponent,
   ],
   imports: [
     BrowserModule,
